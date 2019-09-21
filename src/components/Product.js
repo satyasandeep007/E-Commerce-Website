@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProductConsumer } from "../Context";
+import PropTypes from 'prop-types';
 
 export default class Product extends Component {
     render() {
@@ -35,7 +36,7 @@ export default class Product extends Component {
                     <div className="card-footer d-flex justify-content-between">
                         <p className="align-self-center mb-0">{title}</p>
                         <h5 className="text-blue font-italic mb-0">
-                            <span className="mr-1">$</span>
+                            <span className="mr-1">₹</span>
                             {price}
                         </h5>
                     </div>
@@ -44,6 +45,16 @@ export default class Product extends Component {
         );
     }
 }
+
+Product.propTypes = {
+    product: PropTypes.shape({
+        id: PropTypes.number,
+        img: PropTypes.string,
+        title: PropTypes.string,
+        price: PropTypes.number,
+        inCart: PropTypes.bool,
+    }).isRequired
+};
 
 const ProductWrapper = styled.div`
 .card{
